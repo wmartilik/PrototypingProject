@@ -21,6 +21,10 @@ public class PlayerShooting : NetworkBehaviour
                 //actually shoot - Tell server that we have shot
                 ShootServerRPC();
             }
+            else if (Input.GetAxis("Gamepad Fire") > 0f)
+            {
+                ShootServerRPC();
+            }
         }
     }
 

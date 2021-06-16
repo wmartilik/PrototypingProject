@@ -23,7 +23,7 @@ public class GooGunShooting : NetworkBehaviour
         if (IsLocalPlayer)
         {
             //shoot
-            if (Input.GetButton("Fire") && timer > .5f)
+            if (Input.GetButton("Fire") && timer > 0f)
             {
                 isShooting = true;
                 Debug.Log("Shooting...");
