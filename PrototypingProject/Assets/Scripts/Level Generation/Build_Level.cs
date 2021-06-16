@@ -53,87 +53,87 @@ public class Build_Level : MonoBehaviour
     private Vector3 Pos_8 = new Vector3(-25, 0, 25);
 
     private List<Vector3> Upper_Positions = new List<Vector3>();
-    private Vector3 U_Origin = new Vector3(0, 12, 0);
-    private Vector3 U_Pos_1 = new Vector3(0, 12, 25);
-    private Vector3 U_Pos_2 = new Vector3(25, 12, 25);
-    private Vector3 U_Pos_3 = new Vector3(25, 12, 0);
-    private Vector3 U_Pos_4 = new Vector3(25, 12, -25);
-    private Vector3 U_Pos_5 = new Vector3(0, 12, -25);
-    private Vector3 U_Pos_6 = new Vector3(-25, 12, -25);
-    private Vector3 U_Pos_7 = new Vector3(-25, 12, 0);
-    private Vector3 U_Pos_8 = new Vector3(-25, 12, 25);
+    private Vector3 U_Origin = new Vector3(0, 11, 0);
+    private Vector3 U_Pos_1 = new Vector3(0, 11, 25);
+    private Vector3 U_Pos_2 = new Vector3(25, 11, 25);
+    private Vector3 U_Pos_3 = new Vector3(25, 11, 0);
+    private Vector3 U_Pos_4 = new Vector3(25, 11, -25);
+    private Vector3 U_Pos_5 = new Vector3(0, 11, -25);
+    private Vector3 U_Pos_6 = new Vector3(-25, 11, -25);
+    private Vector3 U_Pos_7 = new Vector3(-25, 11, 0);
+    private Vector3 U_Pos_8 = new Vector3(-25, 11, 25);
 
     private List<Vector3> Barricade_Positions_Small = new List<Vector3>();
-    private Vector3 Barr_Pos_1 = new Vector3(-12.5f, 0, 32.5f);
-    private Vector3 Barr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 Barr_Pos_3 = new Vector3(25, 0, 44.5f);
-    private Vector3 Barr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 Barr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 Barr_Pos_6 = new Vector3(25, 0, -4.5f);
-    private Vector3 Barr_Pos_7 = new Vector3(0, 0, -4.5f);
-    private Vector3 Barr_Pos_8 = new Vector3(-12.5f, 0, 7.5f);
+    private Vector3 Barr_Pos_1 = new Vector3(-12f, 2.5f, 25f);
+    private Vector3 Barr_Pos_2 = new Vector3(0, 2.5f, 37f);
+    private Vector3 Barr_Pos_3 = new Vector3(25, 2.5f, 37f);
+    private Vector3 Barr_Pos_4 = new Vector3(37f, 2.5f, 25f);
+    private Vector3 Barr_Pos_5 = new Vector3(37f, 2.5f, 0f);
+    private Vector3 Barr_Pos_6 = new Vector3(25, 2.5f, -12f);
+    private Vector3 Barr_Pos_7 = new Vector3(0, 2.5f, -12f);
+    private Vector3 Barr_Pos_8 = new Vector3(-12f, 2.5f, 0f);
 
     private List<Vector3> Barricade_Positions_Medium = new List<Vector3>();
-    private Vector3 Med_Barr_Pos_1 = new Vector3(-12.5f, 0, 32.5f);
-    private Vector3 Med_Barr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 Med_Barr_Pos_3 = new Vector3(25f, 0, 44.5f);
-    private Vector3 Med_Barr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 Med_Barr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 Med_Barr_Pos_6 = new Vector3(37.5f, 0, -17.5f);
-    private Vector3 Med_Barr_Pos_7 = new Vector3(25f, 0, -29.5f);
-    private Vector3 Med_Barr_Pos_8 = new Vector3(0, 0, -29.5f);
-    private Vector3 Med_Barr_Pos_9 = new Vector3(-12.5f, 0, -17.5f);
-    private Vector3 Med_Barr_Pos_10 = new Vector3(-12.5f, 0, 7.5f);
+    private Vector3 Med_Barr_Pos_1 = new Vector3(-12f, 2.5f, 25f);
+    private Vector3 Med_Barr_Pos_2 = new Vector3(0, 2.5f, 37f);
+    private Vector3 Med_Barr_Pos_3 = new Vector3(25f, 2.5f, 37f);
+    private Vector3 Med_Barr_Pos_4 = new Vector3(37f, 2.5f, 25f);
+    private Vector3 Med_Barr_Pos_5 = new Vector3(37f, 2.5f, 0f);
+    private Vector3 Med_Barr_Pos_6 = new Vector3(37f, 2.5f, -25f);
+    private Vector3 Med_Barr_Pos_7 = new Vector3(25f, 2.5f, -37f);
+    private Vector3 Med_Barr_Pos_8 = new Vector3(0, 2.5f, -37f);
+    private Vector3 Med_Barr_Pos_9 = new Vector3(-12f, 2.5f, -25f);
+    private Vector3 Med_Barr_Pos_10 = new Vector3(-12f, 2.5f, 0f);
 
     private List<Vector3> Barricade_Positions_Large = new List<Vector3>();
-    private Vector3 Large_Barr_Pos_1 = new Vector3(-25f, 0, 44.5f);
-    private Vector3 Large_Barr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 Large_Barr_Pos_3 = new Vector3(25f, 0, 44.5f);
-    private Vector3 Large_Barr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 Large_Barr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 Large_Barr_Pos_6 = new Vector3(37.5f, 0, -17.5f);
-    private Vector3 Large_Barr_Pos_7 = new Vector3(25f, 0, -29.5f);
-    private Vector3 Large_Barr_Pos_8 = new Vector3(0, 0, -29.5f);
-    private Vector3 Large_Barr_Pos_9 = new Vector3(-25f, 0, -29.5f);
-    private Vector3 Large_Barr_Pos_10 = new Vector3(-37.5f, 0, -17.5f);
-    private Vector3 Large_Barr_Pos_11 = new Vector3(-37.5f, 0, 7.5f);
-    private Vector3 Large_Barr_Pos_12 = new Vector3(-37.5f, 0, 32.5f);
+    private Vector3 Large_Barr_Pos_1 = new Vector3(-25f, 2.5f, 37f);
+    private Vector3 Large_Barr_Pos_2 = new Vector3(0, 2.5f, 37f);
+    private Vector3 Large_Barr_Pos_3 = new Vector3(25f, 2.5f, 37f);
+    private Vector3 Large_Barr_Pos_4 = new Vector3(37f, 2.5f, 25f);
+    private Vector3 Large_Barr_Pos_5 = new Vector3(37f, 2.5f, 0f);
+    private Vector3 Large_Barr_Pos_6 = new Vector3(37f, 2.5f, -25f);
+    private Vector3 Large_Barr_Pos_7 = new Vector3(25f, 2.5f, -37f);
+    private Vector3 Large_Barr_Pos_8 = new Vector3(0, 2.5f, -37f);
+    private Vector3 Large_Barr_Pos_9 = new Vector3(-25f, 2.5f, -37f);
+    private Vector3 Large_Barr_Pos_10 = new Vector3(-37f, 2.5f, -25f);
+    private Vector3 Large_Barr_Pos_11 = new Vector3(-37f, 2.5f, 0f);
+    private Vector3 Large_Barr_Pos_12 = new Vector3(-37f, 2.5f, 25f);
 
     private List<Vector3> UBarricade_Positions_Small = new List<Vector3>();
-    private Vector3 UBarr_Pos_1 = new Vector3(-12.5f, 0, 32.5f);
-    private Vector3 UBarr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 UBarr_Pos_3 = new Vector3(25, 0, 44.5f);
-    private Vector3 UBarr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 UBarr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 UBarr_Pos_6 = new Vector3(25, 0, -4.5f);
-    private Vector3 UBarr_Pos_7 = new Vector3(0, 0, -4.5f);
-    private Vector3 UBarr_Pos_8 = new Vector3(-12.5f, 0, 7.5f);
+    private Vector3 UBarr_Pos_1 = new Vector3(-12f, 13.5f, 25f);
+    private Vector3 UBarr_Pos_2 = new Vector3(0, 13.5f, 37f);
+    private Vector3 UBarr_Pos_3 = new Vector3(25, 13.5f, 37f);
+    private Vector3 UBarr_Pos_4 = new Vector3(37f, 13.5f, 25f);
+    private Vector3 UBarr_Pos_5 = new Vector3(37f, 13.5f, 0f);
+    private Vector3 UBarr_Pos_6 = new Vector3(25, 13.5f, -12f);
+    private Vector3 UBarr_Pos_7 = new Vector3(0, 13.5f, -12f);
+    private Vector3 UBarr_Pos_8 = new Vector3(-12f, 13.5f, 0f);
 
     private List<Vector3> UBarricade_Positions_Medium = new List<Vector3>();
-    private Vector3 UMed_Barr_Pos_1 = new Vector3(-12.5f, 0, 32.5f);
-    private Vector3 UMed_Barr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 UMed_Barr_Pos_3 = new Vector3(25f, 0, 44.5f);
-    private Vector3 UMed_Barr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 UMed_Barr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 UMed_Barr_Pos_6 = new Vector3(37.5f, 0, -17.5f);
-    private Vector3 UMed_Barr_Pos_7 = new Vector3(25f, 0, -29.5f);
-    private Vector3 UMed_Barr_Pos_8 = new Vector3(0, 0, -29.5f);
-    private Vector3 UMed_Barr_Pos_9 = new Vector3(-12.5f, 0, -17.5f);
-    private Vector3 UMed_Barr_Pos_10 = new Vector3(-12.5f, 0, 7.5f);
+    private Vector3 UMed_Barr_Pos_1 = new Vector3(-12f, 13.5f, 25f);
+    private Vector3 UMed_Barr_Pos_2 = new Vector3(0, 13.5f, 37f);
+    private Vector3 UMed_Barr_Pos_3 = new Vector3(25f, 13.5f, 37f);
+    private Vector3 UMed_Barr_Pos_4 = new Vector3(37f, 13.5f, 25f);
+    private Vector3 UMed_Barr_Pos_5 = new Vector3(37f, 13.5f, 0f);
+    private Vector3 UMed_Barr_Pos_6 = new Vector3(37f, 13.5f, -25f);
+    private Vector3 UMed_Barr_Pos_7 = new Vector3(25f, 13.5f, -37f);
+    private Vector3 UMed_Barr_Pos_8 = new Vector3(0, 13.5f, -37f);
+    private Vector3 UMed_Barr_Pos_9 = new Vector3(-12f, 13.5f, -25f);
+    private Vector3 UMed_Barr_Pos_10 = new Vector3(-12f, 13.5f, 0f);
 
     private List<Vector3> UBarricade_Positions_Large = new List<Vector3>();
-    private Vector3 ULarge_Barr_Pos_1 = new Vector3(-25f, 0, 44.5f);
-    private Vector3 ULarge_Barr_Pos_2 = new Vector3(0, 0, 44.5f);
-    private Vector3 ULarge_Barr_Pos_3 = new Vector3(25f, 0, 44.5f);
-    private Vector3 ULarge_Barr_Pos_4 = new Vector3(37.5f, 0, 32.5f);
-    private Vector3 ULarge_Barr_Pos_5 = new Vector3(37.5f, 0, 7.5f);
-    private Vector3 ULarge_Barr_Pos_6 = new Vector3(37.5f, 0, -17.5f);
-    private Vector3 ULarge_Barr_Pos_7 = new Vector3(25f, 0, -29.5f);
-    private Vector3 ULarge_Barr_Pos_8 = new Vector3(0, 0, -29.5f);
-    private Vector3 ULarge_Barr_Pos_9 = new Vector3(-25f, 0, -29.5f);
-    private Vector3 ULarge_Barr_Pos_10 = new Vector3(-37.5f, 0, -17.5f);
-    private Vector3 ULarge_Barr_Pos_11 = new Vector3(-37.5f, 0, 7.5f);
-    private Vector3 ULarge_Barr_Pos_12 = new Vector3(-37.5f, 0, 32.5f);
+    private Vector3 ULarge_Barr_Pos_1 = new Vector3(-25f, 13.5f, 37f);
+    private Vector3 ULarge_Barr_Pos_2 = new Vector3(0, 13.5f, 37f);
+    private Vector3 ULarge_Barr_Pos_3 = new Vector3(25f, 13.5f, 37f);
+    private Vector3 ULarge_Barr_Pos_4 = new Vector3(37f, 13.5f, 25f);
+    private Vector3 ULarge_Barr_Pos_5 = new Vector3(37f, 13.5f, 0f);
+    private Vector3 ULarge_Barr_Pos_6 = new Vector3(37f, 13.5f, -25f);
+    private Vector3 ULarge_Barr_Pos_7 = new Vector3(25f, 13.5f, -37f);
+    private Vector3 ULarge_Barr_Pos_8 = new Vector3(0, 13.5f, -37f);
+    private Vector3 ULarge_Barr_Pos_9 = new Vector3(-25f, 13.5f, -37f);
+    private Vector3 ULarge_Barr_Pos_10 = new Vector3(-37f, 13.5f, -25f);
+    private Vector3 ULarge_Barr_Pos_11 = new Vector3(-37f, 13.5f, 0f);
+    private Vector3 ULarge_Barr_Pos_12 = new Vector3(-37f, 13.5f, 25f);
 
 
     // Start is called before the first frame update
@@ -165,6 +165,16 @@ public class Build_Level : MonoBehaviour
         Positions.Add(Pos_6);
         Positions.Add(Pos_7);
         Positions.Add(Pos_8);
+
+        Upper_Positions.Add(U_Origin);
+        Upper_Positions.Add(U_Pos_1);
+        Upper_Positions.Add(U_Pos_2);
+        Upper_Positions.Add(U_Pos_3);
+        Upper_Positions.Add(U_Pos_4);
+        Upper_Positions.Add(U_Pos_5);
+        Upper_Positions.Add(U_Pos_6);
+        Upper_Positions.Add(U_Pos_7);
+        Upper_Positions.Add(U_Pos_8);
 
         Barricade_Positions_Small.Add(Barr_Pos_1);
         Barricade_Positions_Small.Add(Barr_Pos_2);
@@ -238,16 +248,16 @@ public class Build_Level : MonoBehaviour
         int temp_random = Random.Range(0, _areas.Count);   //Gets a random number to choose a piece from the area array 
         List<GameObject> temp_areas = new List<GameObject>();
         bool return_value = true;
-        for (int i = 0; i < _chosen_areas.Count; i++)
-        {
-            if (_chosen_areas[i] == _areas[temp_random])
-            {
-                return_value = false;
-                break;
-            }
-        }
-        if (return_value)
-            Chosen_Lower_Areas.Add(_areas[temp_random]);
+        //for (int i = 0; i < _chosen_areas.Count; i++)
+        //{
+        //    if (_chosen_areas[i] == _areas[temp_random])
+        //    {
+        //        return_value = false;
+        //        break;
+        //    }
+        //}
+        //if (return_value)
+        Chosen_Lower_Areas.Add(_areas[temp_random]);
 
         return return_value;
     }
@@ -275,7 +285,7 @@ public class Build_Level : MonoBehaviour
                     }
                 }
                 if (skip == false)
-                    Instantiate(Chosen_Upper_Areas[i], Positions[i], Quaternion.identity);
+                    Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
             }
         }
     }
@@ -292,7 +302,7 @@ public class Build_Level : MonoBehaviour
 
                 if (temp_random % 2 != 0 && DoubleDecker_Count > 0)
                 {
-                    while (!GetDoubleAreaPiece(Lower_Areas, Chosen_Lower_Areas))
+                    while (!GetDoubleAreaPiece(Double_Areas, Chosen_Lower_Areas))
                     { }
                     --DoubleDecker_Count;
                 }
@@ -300,7 +310,7 @@ public class Build_Level : MonoBehaviour
                 {
                     while (!GetLowerAreaPiece(Lower_Areas, Chosen_Lower_Areas))
                     { }
-                    while (!GetUpperAreaPiece(Lower_Areas, Chosen_Lower_Areas))
+                    while (!GetUpperAreaPiece(Upper_Areas, Chosen_Upper_Areas))
                     { }
                 }
             }
@@ -316,16 +326,16 @@ public class Build_Level : MonoBehaviour
         int temp_random = Random.Range(0, _areas.Count);   //Gets a random number to choose a piece from the area array 
         List<GameObject> temp_areas = new List<GameObject>();
         bool return_value = true;
-        for (int i = 0; i < _chosen_areas.Count; i++)
-        {
-            if (_chosen_areas[i] == _areas[temp_random])
-            {
-                return_value = false;
-                break;
-            }
-        }
-        if (return_value)
-            Chosen_Upper_Areas.Add(_areas[temp_random]);
+        //for (int i = 0; i < _chosen_areas.Count; i++)
+        //{
+        //    if (_chosen_areas[i] == _areas[temp_random])
+        //    {
+        //        return_value = false;
+        //        break;
+        //    }
+        //}
+        //if (return_value)
+        Chosen_Upper_Areas.Add(_areas[temp_random]);
 
         return return_value;
     }
@@ -335,20 +345,20 @@ public class Build_Level : MonoBehaviour
         int temp_random = Random.Range(0, _areas.Count);   //Gets a random number to choose a piece from the area array 
         List<GameObject> temp_areas = new List<GameObject>();
         bool return_value = true;
-        for (int i = 0; i < _chosen_areas.Count; i++)
-        {
-            if (_chosen_areas[i] == _areas[temp_random])
-            {
-                return_value = false;
-                break;
-            }
-        }
-        if (return_value)
-        {
-            Chosen_Upper_Areas.Add(_areas[temp_random]);
-            Chosen_Lower_Areas.Add(_areas[temp_random]);
-            Skip_Indices.Add(Chosen_Lower_Areas.Count - 1);
-        }
+        //for (int i = 0; i < _chosen_areas.Count; i++)
+        //{
+        //    if (_chosen_areas[i] == _areas[temp_random])
+        //    {
+        //        return_value = false;
+        //        break;
+        //    }
+        //}
+        //if (return_value)
+        //{
+        Chosen_Upper_Areas.Add(_areas[temp_random]);
+        Chosen_Lower_Areas.Add(_areas[temp_random]);
+        Skip_Indices.Add(Chosen_Lower_Areas.Count - 1);
+        // }
 
 
         return return_value;

@@ -3268,19 +3268,29 @@ MonoBehaviour:
   - {fileID: 2822736706616243422, guid: ffae1dd31452c3745b62902e96efec38, type: 3}
   - {fileID: 2641909668733488277, guid: f06ddf64f1dc3ea4cb65bc98de06fd4c, type: 3}
   - {fileID: 3496633575771636271, guid: 9328d544c0c4edd4a8bde602ab7e1fef, type: 3}
-  - {fileID: 513209780989692187, guid: bab4ce788e9f4264ea092e2aebc01d59, type: 3}
   - {fileID: 3648656618513600316, guid: f3884e850fbad434bbbe5923d77e8dcb, type: 3}
   - {fileID: 2670655104558659650, guid: c45bfad3f6a9fa841be5ead198cff813, type: 3}
   - {fileID: 1675653372716490244, guid: 272aacd6fb0bf644c90342a81f91686f, type: 3}
   - {fileID: 3648656618513600316, guid: f4455cb5f2fbaa940979063c0bcba49b, type: 3}
   - {fileID: 1827486366066496735, guid: f87837889b1086348ab6e12efe90e77a, type: 3}
   - {fileID: 7235097881779762577, guid: 95392a0da59c5d24fadf5f5054a11cc6, type: 3}
+  - {fileID: 513209780989692187, guid: bab4ce788e9f4264ea092e2aebc01d59, type: 3}
   Upper_Areas:
+  - {fileID: 2822736706616243422, guid: ffae1dd31452c3745b62902e96efec38, type: 3}
+  - {fileID: 2641909668733488277, guid: f06ddf64f1dc3ea4cb65bc98de06fd4c, type: 3}
+  - {fileID: 3496633575771636271, guid: 9328d544c0c4edd4a8bde602ab7e1fef, type: 3}
+  - {fileID: 3648656618513600316, guid: f3884e850fbad434bbbe5923d77e8dcb, type: 3}
   - {fileID: 2670655104558659650, guid: c45bfad3f6a9fa841be5ead198cff813, type: 3}
+  - {fileID: 1675653372716490244, guid: 272aacd6fb0bf644c90342a81f91686f, type: 3}
+  - {fileID: 3648656618513600316, guid: f4455cb5f2fbaa940979063c0bcba49b, type: 3}
+  - {fileID: 1827486366066496735, guid: f87837889b1086348ab6e12efe90e77a, type: 3}
   - {fileID: 7235097881779762577, guid: 95392a0da59c5d24fadf5f5054a11cc6, type: 3}
-  Double_Areas: []
-  Barricade: {fileID: 0}
-  MultiFloor: 0
+  Double_Areas:
+  - {fileID: 3648656618513600316, guid: 5e83d4bea7354d643a766137374acde9, type: 3}
+  - {fileID: 3648656618513600316, guid: 52b1c15dfc8f8974aaee69ac837020b1, type: 3}
+  Barricade: {fileID: 8467433621505053892, guid: 16d03711f472fc045bbf90bf30d63d32,
+    type: 3}
+  MultiFloor: 1
 --- !u!4 &1889001769
 Transform:
   m_ObjectHideFlags: 0
@@ -3302,7 +3312,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889001767}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 06f25ca23b462484a9c5473bc0549c30, type: 3}
