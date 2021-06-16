@@ -35,8 +35,6 @@ public class Build_Level : MonoBehaviour
 
     private List<GameObject> Chosen_Upper_Areas = new List<GameObject>();
 
-    private int MapSize_Count = 0;
-
     private int DoubleDecker_Count = 0;
 
     private List<int> Skip_Indices = new List<int>();
