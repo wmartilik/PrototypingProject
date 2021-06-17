@@ -7,7 +7,7 @@ using MLAPI.NetworkVariable;
 public class PlayerHealth : NetworkBehaviour
 {
     //make a synchronizable variable to store health
-    NetworkVariableInt health = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly}, 100);
+    public NetworkVariableInt health = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly}, 100);
 
     PlayerSpawner playerSpawner;
 

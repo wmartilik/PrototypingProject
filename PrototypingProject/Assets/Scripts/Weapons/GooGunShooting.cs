@@ -5,12 +5,12 @@ using UnityEngine;
 public class GooGunShooting : NetworkBehaviour
 {
 
-    public ParticleSystem goo;
+    public GameObject goo;
     public float distance = 15;
     public Transform gunbarrel;
     bool isShooting;
 
-    float timer;
+    public float timer;
     public float chargeTime;
 
     private void Start()
@@ -22,6 +22,8 @@ public class GooGunShooting : NetworkBehaviour
     {
         if (IsLocalPlayer)
         {
+            gunbarrel = gameObject.transform;
+
             //shoot
             if (Input.GetButton("Fire") && timer > 0f)
             {
@@ -80,6 +82,6 @@ public class GooGunShooting : NetworkBehaviour
     [ClientRpc] //server --> client
     void ShootClientRPC()
     {
-        goo.gameObject.SetActive(isShooting);
+        Instantiate(goo, gameObject.transform.position, gameObject.transform.rotation);
     }
 }

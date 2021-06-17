@@ -1,21 +1,41 @@
 using MLAPI.Messaging;
 using UnityEngine;
+using System.Collections;
 
 public class GooScript : MonoBehaviour
 {
     PlayerHealth enemyHealth;
-    public GameObject gooObject;
-    Transform gooSpawn;
+    Rigidbody rb;
 
-    private void OnCollisionStay(Collision collision)
+    private void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.AddRelativeForce(0,2,10,ForceMode.Impulse);
+    }
+
+ IEnumerator DestroyGoo()
+    {
+        Debug.Log("destroying goo");
+
+        yield return new WaitForSeconds(3);
+
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<FirstPersonController>())
         {
+            //gameObject.transform.parent = collision.gameObject.transform;
             enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            gooSpawn.position = collision.GetContact(0).point;
             DamagePlayerServerRPC();
         }
-
+        StartCoroutine (DestroyGoo());
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        DamagePlayerServerRPC();
     }
 
     [ServerRpc] //client --> server
@@ -23,7 +43,7 @@ public class GooScript : MonoBehaviour
     {
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(10);
+            enemyHealth.TakeDamage(1);
         }
 
         DamagePlayerClientRPC();
@@ -31,6 +51,5 @@ public class GooScript : MonoBehaviour
     [ClientRpc] //server --> client
     void DamagePlayerClientRPC()
     {
-        Instantiate(gooObject, gooSpawn.position, Quaternion.identity);
     }
 }

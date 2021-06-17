@@ -9,7 +9,7 @@ public class ShardgerShooting : NetworkBehaviour
     public float distance = 15;
     public Transform gunbarrel;
 
-    float timer;
+    public float timer;
     public float chargeTime;
 
     private void Start()
