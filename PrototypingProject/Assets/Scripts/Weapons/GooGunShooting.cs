@@ -6,6 +6,7 @@ public class GooGunShooting : NetworkBehaviour
 {
 
     public GameObject goo;
+    public Material indicator;
     public float distance = 15;
     public Transform gunbarrel;
     bool isShooting;
@@ -16,6 +17,7 @@ public class GooGunShooting : NetworkBehaviour
     private void Start()
     {
         timer = chargeTime;
+        indicator.color = Color.green;
     }
 
     void Update()
@@ -48,11 +50,17 @@ public class GooGunShooting : NetworkBehaviour
         timer += Time.deltaTime;
         if (timer > 2f)
         {
+            indicator.color = Color.green;
             timer = 2f;
             Debug.Log("Charged!");
         }
-        else if (timer < 0f)
+        else if (timer < 2f && timer >= 0)
         {
+            indicator.color = Color.yellow;
+        }
+        else if (timer <= 0f)
+        {
+            indicator.color = Color.red;
             timer = 0f;
             Debug.Log("Depleted!");
         }
@@ -62,11 +70,17 @@ public class GooGunShooting : NetworkBehaviour
         timer -= Time.deltaTime;
         if (timer > 2f)
         {
+            indicator.color = Color.green;
             timer = 2f;
             Debug.Log("Charged!");
         }
-        else if (timer < 0f)
+        else if (timer < 2f && timer > 0)
         {
+            indicator.color = Color.yellow;
+        }
+        else if (timer <= 0f)
+        {
+            indicator.color = Color.red;
             timer = 0f;
             Debug.Log("Depleted!");
         }
