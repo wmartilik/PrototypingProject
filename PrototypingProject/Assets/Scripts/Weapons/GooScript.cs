@@ -24,6 +24,14 @@ public class GooScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject == true && collision.gameObject.GetComponent<FirstPersonController>() == false && collision.gameObject.name != "GooProjectile(Clone)")
+        {
+            //Debug.Log(collision.gameObject.name);
+            //gameObject.GetComponent<Transform>().SetParent(collision.transform);
+            rb.drag = 20;
+
+        }
+
         if (collision.gameObject.GetComponent<FirstPersonController>())
         {
             //gameObject.transform.parent = collision.gameObject.transform;
