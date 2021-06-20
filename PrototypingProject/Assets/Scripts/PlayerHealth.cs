@@ -30,5 +30,6 @@ public class PlayerHealth : NetworkBehaviour
     public void TakeDamage(int damage)
     {
         health.Value -= damage;
+        Debug.Log("Health = " + health.ToString());
     }
 }
