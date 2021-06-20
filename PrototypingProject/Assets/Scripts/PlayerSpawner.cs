@@ -48,7 +48,7 @@ public class PlayerSpawner : NetworkBehaviour
 
     Vector3 GetRandomSpawn()
     {
-        return new Vector3(Random.Range(-3f, 3f), .5f, Random.Range(-3f, 3f));
+        return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
     }
 
     IEnumerator RespawnCoroutine(Vector3 spawnPos)

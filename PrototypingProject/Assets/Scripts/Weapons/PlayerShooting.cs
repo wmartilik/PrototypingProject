@@ -37,7 +37,7 @@ public class PlayerShooting : NetworkBehaviour
             var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
             if(enemyHealth != null)
             {
-                enemyHealth.TakeDamage(10);
+                enemyHealth.TakeDamage(5);
             }
         }
         ShootClientRPC();

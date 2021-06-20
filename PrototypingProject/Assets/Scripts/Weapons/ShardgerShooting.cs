@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class ShardgerShooting : NetworkBehaviour
 {
-
+    public Material indicator;
     public TrailRenderer bulletTrail;
     public float distance = 15;
     public Transform gunbarrel;
 
-    float timer;
+    public float timer;
     public float chargeTime;
 
     private void Start()
     {
         timer = 3;
+        indicator.color = Color.red;
     }
 
     void Update()
@@ -31,9 +32,11 @@ public class ShardgerShooting : NetworkBehaviour
                 //actually shoot - Tell server that we have shot
                 ShootServerRPC();
                 timer = chargeTime;
+                indicator.color = Color.red;
             }
             else if (Input.GetButtonUp("Fire"))
             {
+                indicator.color = Color.red;
                 timer = chargeTime;
             }
         }
@@ -41,10 +44,16 @@ public class ShardgerShooting : NetworkBehaviour
     void ChargeAttack()
     {
         timer -= Time.deltaTime;
-        if (timer < 0f)
+
+        if (timer <= 0f)
         {
+            indicator.color = Color.green;
             timer = 0f;
             Debug.Log("Charged!");
+        }
+        else
+        {
+            indicator.color = Color.red;
         }
     }
 
