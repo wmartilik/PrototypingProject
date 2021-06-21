@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MLAPI;
-using MLAPI.Messaging;
 
-public class PlayerShooting : NetworkBehaviour
+public class PlayerShooting : MonoBehaviour
 {
 
     public TrailRenderer bulletTrail;
@@ -13,44 +11,27 @@ public class PlayerShooting : NetworkBehaviour
 
     void Update()
     {
-        if (IsLocalPlayer)
-        {
             //shoot
             if (Input.GetButtonDown("Fire"))
             {
-                //actually shoot - Tell server that we have shot
-                ShootServerRPC();
+                //actually shoot
+                Shoot();
             }
-            else if (Input.GetAxis("Gamepad Fire") > 0f)
-            {
-                ShootServerRPC();
-            }
-        }
     }
 
-    [ServerRpc] //client --> server
-    void ShootServerRPC()
-    {
-        //do raycast on the server
-        if (Physics.Raycast(gunbarrel.position,gunbarrel.forward, out RaycastHit hit, 15))
-        {
-            var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
-            if(enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(5);
-            }
-        }
-        ShootClientRPC();
-    }
-
-    [ClientRpc] //server --> client
-    void ShootClientRPC()
+    void Shoot()
     {
         var bullet = Instantiate(bulletTrail, gunbarrel.position, Quaternion.identity);
         bullet.AddPosition(gunbarrel.position);
         if(Physics.Raycast(gunbarrel.position,gunbarrel.forward, out RaycastHit hit, 15))
         {
-            bullet.transform.position = hit.point; 
+            bullet.transform.position = hit.point;
+
+            var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(5);
+            }
         }
         else
         {

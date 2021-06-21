@@ -6,13 +6,12 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using MLAPI;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class FirstPersonController : NetworkBehaviour
+public class FirstPersonController : MonoBehaviour
 {
     private Rigidbody rb;
 
@@ -136,8 +135,6 @@ public class FirstPersonController : NetworkBehaviour
 
     void Start()
     {
-        if (IsLocalPlayer)
-        {
             if (lockCursor)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -183,20 +180,13 @@ public class FirstPersonController : NetworkBehaviour
             }
 
             #endregion
-        }
-        else
-        {
-            playerCamera.enabled = false;
-            playerCamera.gameObject.GetComponent<AudioListener>().enabled = false;
-        }
     }
 
     float camRotation;
 
     private void Update()
     {
-        if (IsLocalPlayer)
-        {
+
             #region Camera
 
             // Control camera movement
@@ -334,7 +324,6 @@ public class FirstPersonController : NetworkBehaviour
             {
                 HeadBob();
             }
-        }
 
     }
 

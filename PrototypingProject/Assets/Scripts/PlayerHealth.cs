@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MLAPI;
-using MLAPI.NetworkVariable;
 
-public class PlayerHealth : NetworkBehaviour
+public class PlayerHealth : MonoBehaviour
 {
-    //make a synchronizable variable to store health
-    public NetworkVariableInt health = new NetworkVariableInt(new NetworkVariableSettings { WritePermission = NetworkVariablePermission.OwnerOnly}, 100);
+    public int health = 100;
 
     PlayerSpawner playerSpawner;
 
@@ -19,16 +16,15 @@ public class PlayerHealth : NetworkBehaviour
 
     void Update()
     {
-        if (health.Value <= 0 && IsLocalPlayer)
+        if (health <= 0)
         {
-            health.Value = 100;
+            health = 100;
             playerSpawner.Respawn();
         }
     }
 
-    //runs on server
     public void TakeDamage(int damage)
     {
-        health.Value -= damage;
+        health -= damage;
     }
 }

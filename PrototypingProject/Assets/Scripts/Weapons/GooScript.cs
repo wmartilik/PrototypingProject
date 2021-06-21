@@ -36,28 +36,21 @@ public class GooScript : MonoBehaviour
         {
             //gameObject.transform.parent = collision.gameObject.transform;
             enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            DamagePlayerServerRPC();
+            DamagePlayer();
         }
         StartCoroutine (DestroyGoo());
     }
     private void OnCollisionStay(Collision collision)
     {
         enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-        DamagePlayerServerRPC();
+        DamagePlayer();
     }
 
-    [ServerRpc] //client --> server
-    void DamagePlayerServerRPC()
+    void DamagePlayer()
     {
         if (enemyHealth != null)
         {
             enemyHealth.TakeDamage(1);
         }
-
-        DamagePlayerClientRPC();
-    }
-    [ClientRpc] //server --> client
-    void DamagePlayerClientRPC()
-    {
     }
 }

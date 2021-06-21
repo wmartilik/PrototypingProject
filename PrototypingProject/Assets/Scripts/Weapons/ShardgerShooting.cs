@@ -1,8 +1,6 @@
-using MLAPI;
-using MLAPI.Messaging;
 using UnityEngine;
 
-public class ShardgerShooting : NetworkBehaviour
+public class ShardgerShooting : MonoBehaviour
 {
     public Material indicator;
     public TrailRenderer bulletTrail;
@@ -20,8 +18,6 @@ public class ShardgerShooting : NetworkBehaviour
 
     void Update()
     {
-        if (IsLocalPlayer)
-        {
             if (Input.GetButton("Fire"))
             {
                 ChargeAttack();
@@ -30,7 +26,7 @@ public class ShardgerShooting : NetworkBehaviour
             if (Input.GetButtonUp("Fire") && timer <= 0f)
             {
                 //actually shoot - Tell server that we have shot
-                ShootServerRPC();
+                Shoot();
                 timer = chargeTime;
                 indicator.color = Color.red;
             }
@@ -39,7 +35,6 @@ public class ShardgerShooting : NetworkBehaviour
                 indicator.color = Color.red;
                 timer = chargeTime;
             }
-        }
     }
     void ChargeAttack()
     {
@@ -57,54 +52,7 @@ public class ShardgerShooting : NetworkBehaviour
         }
     }
 
-    [ServerRpc] //client --> server
-    void ShootServerRPC()
-    {
-        RaycastHit hit;
-        RaycastHit hit1;
-        RaycastHit hit2;
-        RaycastHit hit3;
-
-
-        //do raycast on the server
-        if (Physics.Raycast(gunbarrel.position, gunbarrel.forward, out hit, distance))
-        {
-            var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(10);
-            }
-        }
-        if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(-.2f, 0f, 0f), out hit1, distance))
-        {
-            var enemyHealth = hit1.transform.GetComponent<PlayerHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(10);
-            }
-        }
-        if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(0f, -.1f, 0f), out hit2, distance))
-        {
-            var enemyHealth = hit2.transform.GetComponent<PlayerHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(10);
-            }
-        }
-        if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(0f, .1f, 0f), out hit3, distance))
-        {
-            var enemyHealth = hit3.transform.GetComponent<PlayerHealth>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(10);
-            }
-        }
-
-        ShootClientRPC();
-    }
-
-    [ClientRpc] //server --> client
-    void ShootClientRPC()
+    void Shoot()
     {
         RaycastHit hit;
         RaycastHit hit1;
@@ -121,40 +69,55 @@ public class ShardgerShooting : NetworkBehaviour
         bullet2.AddPosition(gunbarrel.position);
         bullet3.AddPosition(gunbarrel.position);
 
+        //do raycast
         if (Physics.Raycast(gunbarrel.position, gunbarrel.forward, out hit, distance))
         {
+            var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
             bullet.transform.position = hit.point;
+
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(10);
+            }
         }
-        else
-        {
-            bullet.transform.position = gunbarrel.position + (gunbarrel.forward * 15);
-        }
+        else bullet.transform.position = gunbarrel.position + (gunbarrel.forward * 15);
 
         if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(-.2f, 0f, 0f), out hit1, distance))
         {
+            var enemyHealth = hit1.transform.GetComponent<PlayerHealth>();
             bullet1.transform.position = hit1.point;
+
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(10);
+            }
         }
-        else
-        {
-            bullet1.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(-.2f, 0f, 0f)) * 15);
-        }
+        else bullet1.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(-.2f, 0f, 0f)) * 15);
+        
 
         if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(0f, -.1f, 0f), out hit2, distance))
         {
+            var enemyHealth = hit2.transform.GetComponent<PlayerHealth>();
             bullet2.transform.position = hit2.point;
-        }
-        else
-        {
-            bullet2.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(0f, -.1f, 0f)) * 15);
-        }
 
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(10);
+            }
+        }
+        else bullet2.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(0f, -.1f, 0f)) * 15);
+        
         if (Physics.Raycast(gunbarrel.position, gunbarrel.forward + new Vector3(0f, .1f, 0f), out hit3, distance))
         {
+            var enemyHealth = hit3.transform.GetComponent<PlayerHealth>();
             bullet3.transform.position = hit3.point;
+
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(10);
+            }
         }
-        else
-        {
-            bullet3.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(0f, .1f, 0f)) * 15);
-        }
+        else bullet3.transform.position = gunbarrel.position + ((gunbarrel.forward + new Vector3(0f, .1f, 0f)) * 15);
+
     }
 }

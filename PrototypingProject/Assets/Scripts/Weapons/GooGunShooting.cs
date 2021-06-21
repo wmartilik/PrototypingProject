@@ -1,15 +1,11 @@
-using MLAPI;
-using MLAPI.Messaging;
 using UnityEngine;
 
-public class GooGunShooting : NetworkBehaviour
+public class GooGunShooting : MonoBehaviour
 {
 
     public GameObject goo;
     public Material indicator;
-    public float distance = 15;
     public Transform gunbarrel;
-    bool isShooting;
 
     public float timer;
     public float chargeTime;
@@ -22,28 +18,23 @@ public class GooGunShooting : NetworkBehaviour
 
     void Update()
     {
-        if (IsLocalPlayer)
-        {
             gunbarrel = gameObject.transform;
 
             //shoot
             if (Input.GetButton("Fire") && timer > 0f)
             {
-                isShooting = true;
                 Debug.Log("Shooting...");
 
-                //actually shoot - Tell server that we have shot
-                ShootServerRPC();
+                //actually shoot
+                Shoot();
                 DepleteAttack();
             }
             if (!Input.GetButton("Fire") && timer < 2f)
             {
-                isShooting = false;
                 Debug.Log("recharging...");
 
                 ChargeAttack();
             }
-        }
     }
     void ChargeAttack()
     {
@@ -85,16 +76,7 @@ public class GooGunShooting : NetworkBehaviour
             Debug.Log("Depleted!");
         }
     }
-
-
-    [ServerRpc] //client --> server
-    void ShootServerRPC()
-    {
-        ShootClientRPC();
-    }
-
-    [ClientRpc] //server --> client
-    void ShootClientRPC()
+    void Shoot()
     {
         Instantiate(goo, gameObject.transform.position, gameObject.transform.rotation);
     }

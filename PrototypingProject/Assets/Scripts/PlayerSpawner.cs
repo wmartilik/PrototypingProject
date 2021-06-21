@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using MLAPI;
-using MLAPI.Messaging;
 
-public class PlayerSpawner : NetworkBehaviour
+public class PlayerSpawner : MonoBehaviour
 {
 
     FirstPersonController cc;
@@ -23,27 +21,14 @@ public class PlayerSpawner : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsLocalPlayer && Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             Respawn();
         }
     }
     public void Respawn()
     {
-        RespawnServerRPC();
-    }
-
-    [ServerRpc]
-    void RespawnServerRPC()
-    {
-        //on the server to sync
-        RespawnClientRPC(GetRandomSpawn());
-    }
-
-    [ClientRpc]
-    void RespawnClientRPC(Vector3 spawnPos)
-    {
-        StartCoroutine(RespawnCoroutine(spawnPos));
+        StartCoroutine(RespawnCoroutine(GetRandomSpawn()));
     }
 
     Vector3 GetRandomSpawn()
