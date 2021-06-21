@@ -12,11 +12,16 @@ public class TargetTimeTrial : MonoBehaviour
     
     private GameObject score;
 
+    [SerializeField]
+    PlayerHealth score_points;
+
     private float time_remaining = 180;
 
     private bool timer_running;
 
     private Text time_text;
+
+    private Text score_text;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +30,7 @@ public class TargetTimeTrial : MonoBehaviour
         timer = GameObject.Find("Timer");
         score = GameObject.Find("Score");
         time_text = timer.GetComponent<Text>();
+        score_text = score.GetComponent<Text>();
         timer_running = true;
     }
 
@@ -46,6 +52,7 @@ public class TargetTimeTrial : MonoBehaviour
                 }
             }
             TimeDisplay(time_remaining);
+            ScoreDisplay(score_points.health);
         }
         
     }
@@ -58,5 +65,10 @@ public class TargetTimeTrial : MonoBehaviour
         float sec = Mathf.FloorToInt(_time % 60);
 
         time_text.text = string.Format("{0:00}:{1:00}", min, sec);
+    }
+
+    void ScoreDisplay(float _score)
+    {
+        score_text.text = _score.ToString();
     }
 }
