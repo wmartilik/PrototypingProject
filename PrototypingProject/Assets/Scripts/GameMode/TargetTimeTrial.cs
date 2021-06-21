@@ -15,7 +15,10 @@ public class TargetTimeTrial : MonoBehaviour
     [SerializeField]
     PlayerHealth score_points;
 
-    private float time_remaining = 180;
+    [SerializeField]
+    private GameObject results;
+
+    private float time_remaining = 3;
 
     private bool timer_running;
 
@@ -32,34 +35,45 @@ public class TargetTimeTrial : MonoBehaviour
         time_text = timer.GetComponent<Text>();
         score_text = score.GetComponent<Text>();
         timer_running = true;
+        Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
     void Update()
     {   
-        if (time_text != null)
-        {
+        
             if (timer_running)
             {
                 if (time_remaining > 0)
                 {
                     time_remaining -= Time.deltaTime;
                 }
-                else
+                else if (time_remaining <= 0)
                 {
                     time_remaining = 0;
-                    timer_running = false;
-                }
+                Time.timeScale = 0;
+
+                ResultsScreen();
+                timer_running = false;
+                Debug.Log("FINISHED");
+            }
             }
             TimeDisplay(time_remaining);
             ScoreDisplay(score_points.health);
-        }
+            //if (time_remaining == 0)
+            //{
+            //    Time.timeScale = 0;
+                
+            //    ResultsScreen(100);
+            //}
+        
         
     }
 
     void TimeDisplay(float _time)
     {
-        _time += 1;
+        
 
         float min = Mathf.FloorToInt(_time / 60);
         float sec = Mathf.FloorToInt(_time % 60);
@@ -70,5 +84,14 @@ public class TargetTimeTrial : MonoBehaviour
     void ScoreDisplay(float _score)
     {
         score_text.text = _score.ToString();
+    }
+
+    void ResultsScreen()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        results.SetActive(true);
+
+        results.GetComponent<Text>().text = score_text.text;
     }
 }
