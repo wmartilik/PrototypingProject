@@ -14,19 +14,19 @@ public class TargetSpline : MonoBehaviour
 
     private void Start()
     {
-        switch (level_info.Level_Size)
+        switch ((int)level_info.Level_Size)
         {
-            case Large:
+            case 8:
                 {
                     FillObjectPoints(20);
                 }
                 break;
-            case Medium:
+            case 5:
                 {
                     FillObjectPoints(15);
                 }
                 break;
-            case Small:
+            case 3:
                 {
                     FillObjectPoints(10);
                 }
@@ -38,8 +38,8 @@ public class TargetSpline : MonoBehaviour
     {
         for (int i = 0; i < _count; ++i)
         {
-            int temp_random = Random.Range(0, Build_Level.Room_Centers.Count);
-            obj_points.Add(Build_Level.Room_Centers[temp_random]);
+            int temp_random = Random.Range(0, level_info.Room_Centers.Count);
+            obj_points.Add(level_info.Room_Centers[temp_random]);
         }
     }
 

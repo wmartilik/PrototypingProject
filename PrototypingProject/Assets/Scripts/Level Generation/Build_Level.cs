@@ -14,7 +14,7 @@ public class Build_Level : MonoBehaviour
     }
 
     [SerializeField]
-    private MapSize Level_Size;
+    public MapSize Level_Size;
 
     [SerializeField]
     private List<GameObject> Lower_Areas = new List<GameObject>();
@@ -154,8 +154,8 @@ public class Build_Level : MonoBehaviour
 
         if (MultiFloor)
             SetUpBarricadesUpperFloor(Level_Size);
-
-        Instantiate(Deathnet, Vector3(0.0f, -20.0f, 0.0f), Quaternion.identity);
+        Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
+        Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
     }
 
@@ -276,7 +276,11 @@ public class Build_Level : MonoBehaviour
             Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
             Room_Centers.Add(Positions[i]);
             if (MultiFloor)
-                Room_Centers.Add(Positions[i] + Vector3(0.0f, 15.0f, 0.0f));
+            {
+                Vector3 temp_vec = new Vector3(0.0f, 15.0f, 0.0f);
+                Room_Centers.Add(Positions[i] + temp_vec);
+            }
+                
         }
 
         if (MultiFloor)
