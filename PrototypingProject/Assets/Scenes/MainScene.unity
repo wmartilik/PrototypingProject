@@ -1695,7 +1695,7 @@ MonoBehaviour:
     00000000:
       type: {class: NullableBoolSerializable, ns: MLAPI.Configuration, asm: Unity.Multiplayer.MLAPI.Runtime}
       data:
-        Value: 1897319656204293034
+        Value: 0
 --- !u!4 &875524995
 Transform:
   m_ObjectHideFlags: 0
@@ -3242,8 +3242,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1889001769}
-  - component: {fileID: 1889001768}
   - component: {fileID: 1889001770}
+  - component: {fileID: 1889001768}
   m_Layer: 0
   m_Name: Level Builder
   m_TagString: Untagged
@@ -3263,43 +3263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a58875c49c8f91438c86f916cf176d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level_Size: 8
-  Lower_Areas:
-  - {fileID: 2822736706616243422, guid: ffae1dd31452c3745b62902e96efec38, type: 3}
-  - {fileID: 2641909668733488277, guid: f06ddf64f1dc3ea4cb65bc98de06fd4c, type: 3}
-  - {fileID: 3496633575771636271, guid: 9328d544c0c4edd4a8bde602ab7e1fef, type: 3}
-  - {fileID: 3648656618513600316, guid: f3884e850fbad434bbbe5923d77e8dcb, type: 3}
-  - {fileID: 2670655104558659650, guid: c45bfad3f6a9fa841be5ead198cff813, type: 3}
-  - {fileID: 1675653372716490244, guid: 272aacd6fb0bf644c90342a81f91686f, type: 3}
-  - {fileID: 3648656618513600316, guid: f4455cb5f2fbaa940979063c0bcba49b, type: 3}
-  - {fileID: 1827486366066496735, guid: f87837889b1086348ab6e12efe90e77a, type: 3}
-  - {fileID: 7235097881779762577, guid: 95392a0da59c5d24fadf5f5054a11cc6, type: 3}
-  - {fileID: 513209780989692187, guid: bab4ce788e9f4264ea092e2aebc01d59, type: 3}
-  - {fileID: 3648656618513600316, guid: 1b9420c9620e7874fb10fd4ca4d8df3b, type: 3}
-  - {fileID: 3648656618513600316, guid: 376d4fe913bc80d45b3376736e1c76fb, type: 3}
-  - {fileID: 3648656618513600316, guid: 1acb29e54c5e80f41aeecb04585ed739, type: 3}
-  - {fileID: 3648656618513600316, guid: 038654e7d72d5984f8244d5ff8792b87, type: 3}
-  Upper_Areas:
-  - {fileID: 2822736706616243422, guid: ffae1dd31452c3745b62902e96efec38, type: 3}
-  - {fileID: 2641909668733488277, guid: f06ddf64f1dc3ea4cb65bc98de06fd4c, type: 3}
-  - {fileID: 3496633575771636271, guid: 9328d544c0c4edd4a8bde602ab7e1fef, type: 3}
-  - {fileID: 3648656618513600316, guid: f3884e850fbad434bbbe5923d77e8dcb, type: 3}
-  - {fileID: 2670655104558659650, guid: c45bfad3f6a9fa841be5ead198cff813, type: 3}
-  - {fileID: 1675653372716490244, guid: 272aacd6fb0bf644c90342a81f91686f, type: 3}
-  - {fileID: 3648656618513600316, guid: f4455cb5f2fbaa940979063c0bcba49b, type: 3}
-  - {fileID: 1827486366066496735, guid: f87837889b1086348ab6e12efe90e77a, type: 3}
-  - {fileID: 7235097881779762577, guid: 95392a0da59c5d24fadf5f5054a11cc6, type: 3}
-  - {fileID: 3648656618513600316, guid: 1b9420c9620e7874fb10fd4ca4d8df3b, type: 3}
-  - {fileID: 3648656618513600316, guid: 376d4fe913bc80d45b3376736e1c76fb, type: 3}
-  - {fileID: 3648656618513600316, guid: 038654e7d72d5984f8244d5ff8792b87, type: 3}
-  - {fileID: 3648656618513600316, guid: 1acb29e54c5e80f41aeecb04585ed739, type: 3}
-  Double_Areas:
-  - {fileID: 3648656618513600316, guid: 5e83d4bea7354d643a766137374acde9, type: 3}
-  - {fileID: 3648656618513600316, guid: 52b1c15dfc8f8974aaee69ac837020b1, type: 3}
-  - {fileID: 3648656618513600316, guid: 790f4aa0a28bee54790f7263951301ce, type: 3}
-  Barricade: {fileID: 8467433621505053892, guid: 16d03711f472fc045bbf90bf30d63d32,
-    type: 3}
-  MultiFloor: 1
+  Level_Size: 0
+  Lower_Areas: []
+  Upper_Areas: []
+  Double_Areas: []
+  Barricade: {fileID: 0}
+  MultiFloor: 0
 --- !u!4 &1889001769
 Transform:
   m_ObjectHideFlags: 0
