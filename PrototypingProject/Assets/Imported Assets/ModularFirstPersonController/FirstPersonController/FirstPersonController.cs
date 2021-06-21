@@ -187,144 +187,143 @@ public class FirstPersonController : MonoBehaviour
     private void Update()
     {
 
-            #region Camera
+        #region Camera
 
-            // Control camera movement
-            if (cameraCanMove)
+        // Control camera movement
+        if (cameraCanMove)
+        {
+            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+
+            if (!invertCamera)
             {
-                yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+                pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
+            else
+            {
+                // Inverted Y
+                pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
+            }
 
-                if (!invertCamera)
+            // Clamp pitch between lookAngle
+            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        }
+
+        #region Camera Zoom
+
+        if (enableZoom)
+        {
+            // Changes isZoomed when key is pressed
+            // Behavior for toogle zoom
+            if (Input.GetKeyDown(zoomKey) && !holdToZoom && !isSprinting)
+            {
+                if (!isZoomed)
                 {
-                    pitch -= mouseSensitivity * Input.GetAxis("Mouse Y");
+                    isZoomed = true;
                 }
                 else
-                {
-                    // Inverted Y
-                    pitch += mouseSensitivity * Input.GetAxis("Mouse Y");
-                }
-
-                // Clamp pitch between lookAngle
-                pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-                transform.localEulerAngles = new Vector3(0, yaw, 0);
-                playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-            }
-
-            #region Camera Zoom
-
-            if (enableZoom)
-            {
-                // Changes isZoomed when key is pressed
-                // Behavior for toogle zoom
-                if (Input.GetKeyDown(zoomKey) && !holdToZoom && !isSprinting)
-                {
-                    if (!isZoomed)
-                    {
-                        isZoomed = true;
-                    }
-                    else
-                    {
-                        isZoomed = false;
-                    }
-                }
-
-                // Changes isZoomed when key is pressed
-                // Behavior for hold to zoom
-                if (holdToZoom && !isSprinting)
-                {
-                    if (Input.GetKeyDown(zoomKey))
-                    {
-                        isZoomed = true;
-                    }
-                    else if (Input.GetKeyUp(zoomKey))
-                    {
-                        isZoomed = false;
-                    }
-                }
-
-                // Lerps camera.fieldOfView to allow for a smooth transistion
-                if (isZoomed)
-                {
-                    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, zoomFOV, zoomStepTime * Time.deltaTime);
-                }
-                else if (!isZoomed && !isSprinting)
-                {
-                    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomStepTime * Time.deltaTime);
-                }
-            }
-
-            #endregion
-            #endregion
-
-            #region Sprint
-
-            if (enableSprint)
-            {
-                if (isSprinting)
                 {
                     isZoomed = false;
-                    playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
+                }
+            }
 
-                    // Drain sprint remaining while sprinting
-                    if (!unlimitedSprint)
+            // Changes isZoomed when key is pressed
+            // Behavior for hold to zoom
+            if (holdToZoom && !isSprinting)
+            {
+                if (Input.GetKeyDown(zoomKey))
+                {
+                    isZoomed = true;
+                }
+                else if (Input.GetKeyUp(zoomKey))
+                {
+                    isZoomed = false;
+                }
+            }
+
+            // Lerps camera.fieldOfView to allow for a smooth transistion
+            if (isZoomed)
+            {
+                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, zoomFOV, zoomStepTime * Time.deltaTime);
+            }
+            else if (!isZoomed && !isSprinting)
+            {
+                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, fov, zoomStepTime * Time.deltaTime);
+            }
+        }
+
+        #endregion
+        #endregion
+
+        #region Sprint
+
+        if (enableSprint)
+        {
+            if (isSprinting)
+            {
+                isZoomed = false;
+                playerCamera.fieldOfView = Mathf.Lerp(playerCamera.fieldOfView, sprintFOV, sprintFOVStepTime * Time.deltaTime);
+
+                // Drain sprint remaining while sprinting
+                if (!unlimitedSprint)
+                {
+                    sprintRemaining -= 1 * Time.deltaTime;
+                    if (sprintRemaining <= 0)
                     {
-                        sprintRemaining -= 1 * Time.deltaTime;
-                        if (sprintRemaining <= 0)
-                        {
-                            isSprinting = false;
-                            isSprintCooldown = true;
-                        }
+                        isSprinting = false;
+                        isSprintCooldown = true;
                     }
                 }
-                else
-                {
-                    // Regain sprint while not sprinting
-                    sprintRemaining = Mathf.Clamp(sprintRemaining += 1 * Time.deltaTime, 0, sprintDuration);
-                }
-
-                // Handles sprint cooldown 
-                // When sprint remaining == 0 stops sprint ability until hitting cooldown
-                if (isSprintCooldown)
-                {
-                    sprintCooldown -= 1 * Time.deltaTime;
-                    if (sprintCooldown <= 0)
-                    {
-                        isSprintCooldown = false;
-                    }
-                }
-                else
-                {
-                    sprintCooldown = sprintCooldownReset;
-                }
-
-                // Handles sprintBar 
-                if (useSprintBar && !unlimitedSprint)
-                {
-                    float sprintRemainingPercent = sprintRemaining / sprintDuration;
-                    sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
-                }
             }
-
-            #endregion
-
-            #region Jump
-
-            // Gets input and calls jump method
-            if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+            else
             {
-                Jump();
+                // Regain sprint while not sprinting
+                sprintRemaining = Mathf.Clamp(sprintRemaining += 1 * Time.deltaTime, 0, sprintDuration);
             }
 
-            #endregion
-
-            CheckGround();
-
-            if (enableHeadBob)
+            // Handles sprint cooldown 
+            // When sprint remaining == 0 stops sprint ability until hitting cooldown
+            if (isSprintCooldown)
             {
-                HeadBob();
+                sprintCooldown -= 1 * Time.deltaTime;
+                if (sprintCooldown <= 0)
+                {
+                    isSprintCooldown = false;
+                }
+            }
+            else
+            {
+                sprintCooldown = sprintCooldownReset;
             }
 
+            // Handles sprintBar 
+            if (useSprintBar && !unlimitedSprint)
+            {
+                float sprintRemainingPercent = sprintRemaining / sprintDuration;
+                sprintBar.transform.localScale = new Vector3(sprintRemainingPercent, 1f, 1f);
+            }
+        }
+
+        #endregion
+
+        #region Jump
+
+        // Gets input and calls jump method
+        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        {
+            Jump();
+        }
+
+        #endregion
+
+        CheckGround();
+
+        if (enableHeadBob)
+        {
+            HeadBob();
+        }
     }
 
     void FixedUpdate()
