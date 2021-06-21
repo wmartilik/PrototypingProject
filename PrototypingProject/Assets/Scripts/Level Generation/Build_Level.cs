@@ -14,7 +14,7 @@ public class Build_Level : MonoBehaviour
     }
 
     [SerializeField]
-    private MapSize Level_Size;
+    public MapSize Level_Size;
 
     [SerializeField]
     private List<GameObject> Lower_Areas = new List<GameObject>();
@@ -29,11 +29,16 @@ public class Build_Level : MonoBehaviour
     private GameObject Barricade;
 
     [SerializeField]
+    private GameObject Deathnet;
+
+    [SerializeField]
     private bool MultiFloor;
 
     private List<GameObject> Chosen_Lower_Areas = new List<GameObject>();
 
     private List<GameObject> Chosen_Upper_Areas = new List<GameObject>();
+
+    public List<Vector3> Room_Centers = new List<Vector3>();
 
     private int DoubleDecker_Count = 0;
 
@@ -135,7 +140,7 @@ public class Build_Level : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
 
@@ -149,6 +154,8 @@ public class Build_Level : MonoBehaviour
 
         if (MultiFloor)
             SetUpBarricadesUpperFloor(Level_Size);
+        Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
+        Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
     }
 
@@ -267,6 +274,13 @@ public class Build_Level : MonoBehaviour
         for (int i = 0; i < Chosen_Lower_Areas.Count; i++)
         {
             Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
+            Room_Centers.Add(Positions[i]);
+            if (MultiFloor)
+            {
+                Vector3 temp_vec = new Vector3(0.0f, 15.0f, 0.0f);
+                Room_Centers.Add(Positions[i] + temp_vec);
+            }
+                
         }
 
         if (MultiFloor)
@@ -283,7 +297,10 @@ public class Build_Level : MonoBehaviour
                     }
                 }
                 if (skip == false)
+                {
                     Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
+                    
+                }
             }
         }
     }
