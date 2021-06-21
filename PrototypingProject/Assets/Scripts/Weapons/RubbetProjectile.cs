@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RubbetProjectile : MonoBehaviour
 {
-    PlayerHealth enemyHealth;
     public GameObject fx;
     Rigidbody rb;
     int bounces;
-    public float radius = 5;
+    public float radius = 20;
+    PlayerHealth ph;
 
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.AddRelativeForce(0, 50, 0, ForceMode.Impulse);
+        rb.AddRelativeForce(0, 5, 0, ForceMode.Impulse);
     }
     private void Update()
     {
@@ -37,12 +37,11 @@ public class RubbetProjectile : MonoBehaviour
 
         if (collision.gameObject.GetComponent<FirstPersonController>())
         {
-            enemyHealth = collision.gameObject.GetComponent<PlayerHealth>();
-            DamagePlayer();
+            DamagePlayer(ph, 80);
         }
         else
         {
-            rb.AddRelativeForce(0, 0, -25, ForceMode.Impulse);
+            rb.AddRelativeForce(0, -5, 0, ForceMode.Impulse);
         }
     }
 
@@ -57,17 +56,19 @@ public class RubbetProjectile : MonoBehaviour
         {
             PlayerHealth ph = hit.GetComponent<PlayerHealth>();
 
+            Debug.Log(ph);
+
             if (ph != null)
             {
-                DamagePlayer();
+                DamagePlayer(ph, 60);
             }
         }
     }
-    void DamagePlayer()
+    void DamagePlayer(PlayerHealth ph, int damageValue)
     {
-        if (enemyHealth != null)
+        if (ph != null)
         {
-            enemyHealth.TakeDamage(80);
+            ph.TakeDamage(80);
         }
     }
 }
