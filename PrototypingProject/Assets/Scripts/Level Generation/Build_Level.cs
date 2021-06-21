@@ -155,7 +155,7 @@ public class Build_Level : MonoBehaviour
         if (MultiFloor)
             SetUpBarricadesUpperFloor(Level_Size);
         Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
-        Instantiate(Deathnet, temp_vec, Quaternion.identity);
+        //Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
     }
 
