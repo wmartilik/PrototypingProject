@@ -15,4 +15,17 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Quit Game");
         Application.Quit();
     }
+
+    public void Retry()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Application.LoadLevel(Application.loadedLevel);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }

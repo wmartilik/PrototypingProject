@@ -10,7 +10,7 @@ public class TargetSpline : MonoBehaviour
     [SerializeField]
     private Build_Level level_info;
 
-    private List<Vector3> obj_points = new List<Vector3>();
+    public List<Vector3> obj_points = new List<Vector3>();
 
     private void Start()
     {
@@ -32,6 +32,7 @@ public class TargetSpline : MonoBehaviour
                 }
                 break;
         }
+
     }
 
     void FillObjectPoints(int _count)

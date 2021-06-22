@@ -6,14 +6,18 @@ public class ShardgerShooting : MonoBehaviour
     public TrailRenderer bulletTrail;
     public float distance = 15;
     public Transform gunbarrel;
+    public GameObject fx = null;
+    private float rand;
 
     public float timer;
     public float chargeTime;
+
 
     private void Start()
     {
         timer = 3;
         indicator.color = Color.red;
+
     }
 
     void Update()
@@ -35,6 +39,8 @@ public class ShardgerShooting : MonoBehaviour
                 indicator.color = Color.red;
                 timer = chargeTime;
             }
+
+        rand = Random.Range(-0.5f, 0.5f);
     }
     void ChargeAttack()
     {
@@ -54,15 +60,17 @@ public class ShardgerShooting : MonoBehaviour
 
     void Shoot()
     {
+        GetComponent<AudioSource>().Play();
+
         RaycastHit hit;
         RaycastHit hit1;
         RaycastHit hit2;
         RaycastHit hit3;
 
         var bullet = Instantiate(bulletTrail, gunbarrel.position, Quaternion.identity);
-        var bullet1 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(-.2f, 0f, 0f), Quaternion.identity);
-        var bullet2 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(0f, -.1f, 0f), Quaternion.identity);
-        var bullet3 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(0f, .1f, 0f), Quaternion.identity);
+        var bullet1 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(-rand, rand, rand), Quaternion.identity);
+        var bullet2 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(rand, -rand, rand), Quaternion.identity);
+        var bullet3 = Instantiate(bulletTrail, gunbarrel.position + new Vector3(rand, rand, rand), Quaternion.identity);
 
         bullet.AddPosition(gunbarrel.position);
         bullet1.AddPosition(gunbarrel.position);
@@ -74,10 +82,11 @@ public class ShardgerShooting : MonoBehaviour
         {
             var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
             bullet.transform.position = hit.point;
+            Instantiate(fx, hit.point, Quaternion.identity);
 
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(10);
+                enemyHealth.TakeDamage(40);
             }
         }
         else bullet.transform.position = gunbarrel.position + (gunbarrel.forward * 15);
@@ -86,6 +95,7 @@ public class ShardgerShooting : MonoBehaviour
         {
             var enemyHealth = hit1.transform.GetComponent<PlayerHealth>();
             bullet1.transform.position = hit1.point;
+            Instantiate(fx, hit1.point, Quaternion.identity);
 
             if (enemyHealth != null)
             {
@@ -99,6 +109,7 @@ public class ShardgerShooting : MonoBehaviour
         {
             var enemyHealth = hit2.transform.GetComponent<PlayerHealth>();
             bullet2.transform.position = hit2.point;
+            Instantiate(fx, hit2.point, Quaternion.identity);
 
             if (enemyHealth != null)
             {
@@ -111,6 +122,7 @@ public class ShardgerShooting : MonoBehaviour
         {
             var enemyHealth = hit3.transform.GetComponent<PlayerHealth>();
             bullet3.transform.position = hit3.point;
+            Instantiate(fx, hit3.point, Quaternion.identity);
 
             if (enemyHealth != null)
             {

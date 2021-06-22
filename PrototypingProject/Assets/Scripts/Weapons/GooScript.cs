@@ -29,7 +29,7 @@ public class GooScript : MonoBehaviour
             //Debug.Log(collision.gameObject.name);
             //gameObject.GetComponent<Transform>().SetParent(collision.transform);
             rb.drag = 20;
-
+            GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.GetComponent<FirstPersonController>())

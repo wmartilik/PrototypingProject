@@ -155,8 +155,9 @@ public class Build_Level : MonoBehaviour
         if (MultiFloor)
             SetUpBarricadesUpperFloor(Level_Size);
         Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
-        Instantiate(Deathnet, temp_vec, Quaternion.identity);
+        //Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
+        Debug.Log(Room_Centers.Count);
     }
 
     void FillPositionsVectors()
@@ -274,11 +275,16 @@ public class Build_Level : MonoBehaviour
         for (int i = 0; i < Chosen_Lower_Areas.Count; i++)
         {
             Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
-            Room_Centers.Add(Positions[i]);
+            Vector3 something = new Vector3(Positions[i].x, Positions[i].y, Positions[i].z);
+            Vector3 otherTemp_vec = new Vector3(0.0f, 5.0f, 0.0f);
+
+            Room_Centers.Add(something + otherTemp_vec);
+
             if (MultiFloor)
             {
                 Vector3 temp_vec = new Vector3(0.0f, 15.0f, 0.0f);
-                Room_Centers.Add(Positions[i] + temp_vec);
+
+                Room_Centers.Add(something + temp_vec);
             }
                 
         }

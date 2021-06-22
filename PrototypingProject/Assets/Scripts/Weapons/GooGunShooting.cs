@@ -18,23 +18,32 @@ public class GooGunShooting : MonoBehaviour
 
     void Update()
     {
-            gunbarrel = gameObject.transform;
+        gunbarrel = gameObject.transform;
 
-            //shoot
-            if (Input.GetButton("Fire") && timer > 0f)
-            {
-                Debug.Log("Shooting...");
+        //shoot
+        if (Input.GetButtonDown("Fire"))
+        {
+            GetComponent<AudioSource>().Play();
+        }
+        else if (Input.GetButtonUp("Fire"))
+        {
+            GetComponent<AudioSource>().Stop();
+        }
 
-                //actually shoot
-                Shoot();
-                DepleteAttack();
-            }
-            if (!Input.GetButton("Fire") && timer < 2f)
-            {
-                Debug.Log("recharging...");
+        if (Input.GetButton("Fire") && timer > 0f)
+        {
+            Debug.Log("Shooting...");
 
-                ChargeAttack();
-            }
+            //actually shoot
+            Shoot();
+            DepleteAttack();
+        }
+        if (!Input.GetButton("Fire") && timer < 2f)
+        {
+            Debug.Log("recharging...");
+
+            ChargeAttack();
+        }
     }
     void ChargeAttack()
     {
@@ -73,6 +82,7 @@ public class GooGunShooting : MonoBehaviour
         {
             indicator.color = Color.red;
             timer = 0f;
+            GetComponent<AudioSource>().Stop();
             Debug.Log("Depleted!");
         }
     }
