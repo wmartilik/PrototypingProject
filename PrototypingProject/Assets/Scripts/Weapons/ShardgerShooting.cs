@@ -54,6 +54,8 @@ public class ShardgerShooting : MonoBehaviour
 
     void Shoot()
     {
+        GetComponent<AudioSource>().Play();
+
         RaycastHit hit;
         RaycastHit hit1;
         RaycastHit hit2;
@@ -77,7 +79,7 @@ public class ShardgerShooting : MonoBehaviour
 
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage(10);
+                enemyHealth.TakeDamage(40);
             }
         }
         else bullet.transform.position = gunbarrel.position + (gunbarrel.forward * 15);

@@ -50,6 +50,7 @@ public class RubbetShooting : MonoBehaviour
     }
     void Shoot()
     {
+        GetComponent<AudioSource>().Play();
         Instantiate(projectile, gameObject.transform.position, transform.rotation);
         indicator.color = Color.red;
     }

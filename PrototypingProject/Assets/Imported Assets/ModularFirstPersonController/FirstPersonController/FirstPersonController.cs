@@ -339,10 +339,14 @@ public class FirstPersonController : MonoBehaviour
             // Will allow head bob
             if (targetVelocity.x != 0 || targetVelocity.z != 0 && isGrounded)
             {
+                GetComponent<AudioSource>().enabled = true;
+
                 isWalking = true;
             }
             else
             {
+                GetComponent<AudioSource>().enabled = false;
+
                 isWalking = false;
             }
 
@@ -430,6 +434,7 @@ public class FirstPersonController : MonoBehaviour
     {
         if (isWalking)
         {
+
             // Calculates HeadBob speed during sprint
             if (isSprinting)
             {
@@ -445,6 +450,7 @@ public class FirstPersonController : MonoBehaviour
         }
         else
         {
+
             // Resets when play stops moving
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));

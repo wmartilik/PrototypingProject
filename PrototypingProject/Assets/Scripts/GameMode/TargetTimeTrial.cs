@@ -18,7 +18,7 @@ public class TargetTimeTrial : MonoBehaviour
     [SerializeField]
     private GameObject results;
 
-    private float time_remaining = 3;
+    private float time_remaining = 120;
 
     private bool timer_running;
 
@@ -53,7 +53,7 @@ public class TargetTimeTrial : MonoBehaviour
                 {
                     time_remaining = 0;
                 Time.timeScale = 0;
-
+                player.GetComponent<FirstPersonController>().enabled = false;
                 ResultsScreen();
                 timer_running = false;
                 Debug.Log("FINISHED");
@@ -73,8 +73,6 @@ public class TargetTimeTrial : MonoBehaviour
 
     void TimeDisplay(float _time)
     {
-        
-
         float min = Mathf.FloorToInt(_time / 60);
         float sec = Mathf.FloorToInt(_time % 60);
 
@@ -92,6 +90,6 @@ public class TargetTimeTrial : MonoBehaviour
         Cursor.visible = true;
         results.SetActive(true);
 
-        results.GetComponent<Text>().text = score_text.text;
+        results.GetComponentInChildren<Text>().text = score_text.text;
     }
 }

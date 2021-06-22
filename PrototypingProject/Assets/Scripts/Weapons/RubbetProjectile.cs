@@ -20,7 +20,6 @@ public class RubbetProjectile : MonoBehaviour
         if (bounces >= 2)
         {
             Explode();
-            DestroyRubbet();
         }
     }
     void DestroyRubbet()
@@ -35,9 +34,9 @@ public class RubbetProjectile : MonoBehaviour
         bounces += 1;
         Debug.Log(bounces);
 
-        if (collision.gameObject.GetComponent<FirstPersonController>())
+        if (collision.gameObject.GetComponent<PlayerHealth>())
         {
-            DamagePlayer(ph, 80);
+            Explode();
         }
         else
         {
@@ -60,9 +59,10 @@ public class RubbetProjectile : MonoBehaviour
 
             if (ph != null)
             {
-                DamagePlayer(ph, 60);
+                DamagePlayer(ph, 80);
             }
         }
+        DestroyRubbet();
     }
     void DamagePlayer(PlayerHealth ph, int damageValue)
     {
