@@ -37,5 +37,7 @@ public class PlayerShooting : MonoBehaviour
         {
             bullet.transform.position = gunbarrel.position + (gunbarrel.forward * 15);
         }
+
+        GetComponent<AudioSource>().Play();
     }
 }
