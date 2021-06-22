@@ -8,15 +8,15 @@ public class PlayerShooting : MonoBehaviour
     public TrailRenderer bulletTrail;
 
     public Transform gunbarrel;
+    public GameObject fx = null;
 
-    void Update()
+
+	void Update()
     {
-            //shoot
-            if (Input.GetButtonDown("Fire"))
-            {
-                //actually shoot
-                Shoot();
-            }
+        if (Input.GetButtonUp("Fire"))
+        {
+            Shoot();
+        }
     }
 
     void Shoot()
@@ -26,6 +26,7 @@ public class PlayerShooting : MonoBehaviour
         if(Physics.Raycast(gunbarrel.position,gunbarrel.forward, out RaycastHit hit, 15))
         {
             bullet.transform.position = hit.point;
+            Instantiate(fx, hit.point, Quaternion.identity);
 
             var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
             if (enemyHealth != null)

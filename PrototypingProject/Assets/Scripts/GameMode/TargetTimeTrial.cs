@@ -7,9 +7,9 @@ public class TargetTimeTrial : MonoBehaviour
 {
 
     private GameObject player;
-    
+
     private GameObject timer;
-    
+
     private GameObject score;
 
     [SerializeField]
@@ -41,39 +41,39 @@ public class TargetTimeTrial : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
-        
-            if (timer_running)
+    {
+
+        if (timer_running)
+        {
+            if (time_remaining > 0)
             {
-                if (time_remaining > 0)
-                {
-                    time_remaining -= Time.deltaTime;
-                }
-                else if (time_remaining <= 0)
-                {
-                    time_remaining = 0;
+                time_remaining -= Time.deltaTime;
+            }
+            else if (time_remaining <= 0)
+            {
+                time_remaining = 0;
                 Time.timeScale = 0;
 
                 ResultsScreen();
                 timer_running = false;
                 Debug.Log("FINISHED");
             }
-            }
-            TimeDisplay(time_remaining);
-            ScoreDisplay(score_points.health);
-            //if (time_remaining == 0)
-            //{
-            //    Time.timeScale = 0;
-                
-            //    ResultsScreen(100);
-            //}
-        
-        
+        }
+        TimeDisplay(time_remaining);
+        ScoreDisplay(score_points.health);
+        //if (time_remaining == 0)
+        //{
+        //    Time.timeScale = 0;
+
+        //    ResultsScreen(100);
+        //}
+
+
     }
 
     void TimeDisplay(float _time)
     {
-        
+
 
         float min = Mathf.FloorToInt(_time / 60);
         float sec = Mathf.FloorToInt(_time % 60);
