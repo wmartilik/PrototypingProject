@@ -6,6 +6,8 @@ public class ShardgerShooting : MonoBehaviour
     public TrailRenderer bulletTrail;
     public float distance = 15;
     public Transform gunbarrel;
+    public GameObject fx;
+
 
     public float timer;
     public float chargeTime;
@@ -74,6 +76,7 @@ public class ShardgerShooting : MonoBehaviour
         {
             var enemyHealth = hit.transform.GetComponent<PlayerHealth>();
             bullet.transform.position = hit.point;
+            Instantiate(fx, transform.position, transform.rotation);
 
             if (enemyHealth != null)
             {

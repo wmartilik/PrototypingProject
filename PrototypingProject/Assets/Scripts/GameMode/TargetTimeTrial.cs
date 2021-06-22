@@ -18,7 +18,7 @@ public class TargetTimeTrial : MonoBehaviour
     [SerializeField]
     private GameObject results;
 
-    private float time_remaining = 3;
+    private float time_remaining = 180;
 
     private bool timer_running;
 

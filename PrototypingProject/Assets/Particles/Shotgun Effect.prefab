@@ -4876,7 +4876,7 @@ GameObject:
   - component: {fileID: 6608004706092019589}
   - component: {fileID: 8643443705323089796}
   m_Layer: 0
-  m_Name: ExplosionEffect
+  m_Name: Shotgun Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
