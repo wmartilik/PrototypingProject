@@ -96,6 +96,8 @@ public class FirstPersonController : MonoBehaviour
     public bool enableJump = true;
     public KeyCode jumpKey = KeyCode.Space;
     public float jumpPower = 5f;
+    public bool isJump = false;
+    public bool isDoublejump = false;
 
     // Internal Variables
     private bool isGrounded = false;
@@ -311,10 +313,41 @@ public class FirstPersonController : MonoBehaviour
         #region Jump
 
         // Gets input and calls jump method
-        if (enableJump && Input.GetKeyDown(jumpKey) && isGrounded)
+        if (enableJump && Input.GetKeyDown(jumpKey) )
         {
-            Jump();
+            if (isGrounded)
+            {
+                Jump();
+                isJump = true;
+                isDoublejump = true;
+            }
+           
+
+            //else if (!isJump)//if still jump, do not repeat 
+            //{
+            //    //rigidbody.AddForce(Vector3.up * force);
+            //    isJump = true;
+            //    isDoublejump = true;
+            //}
+            //else
+            //{
+            //    if (isDoubleJump)//doubleJumping  
+            //    {
+            //        //return;//otherwise can't DdoubleJ ump
+            //        isDoublejump = false;
+            //    }
+            //    else (!isGrounded)
+            //    {
+            //        isDoubleJump = true;
+            //        DoubleJump();
+            //        //GetComponent<Rigidbody>().AddForce(Vector3.up * force);
+            //        //rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+            //    }
+            //}
+               
+           
         }
+        
 
         #endregion
 
@@ -413,6 +446,8 @@ public class FirstPersonController : MonoBehaviour
         {
             Debug.DrawRay(origin, direction * distance, Color.red);
             isGrounded = true;
+            //isJump = false;
+            //isDoubleJump = false;
         }
         else
         {
@@ -428,7 +463,29 @@ public class FirstPersonController : MonoBehaviour
             rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
             isGrounded = false;
         }
+
+        //if (!isGrounded && !isJump)
+        //{
+        //    rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+        //    isGrounded = false;
+        //}
+
+        //if (isGrounded == false && isJump == true)
+        //{
+
+        //    rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+        //}
     }
+
+    //private void DoubleJump()
+    //{
+    //    if (isGrounded == false && isJump == true)
+    //    {
+            
+    //            rb.AddForce(0f, jumpPower, 0f, ForceMode.Impulse);
+    //    }
+            
+    //}
 
     private void HeadBob()
     {
