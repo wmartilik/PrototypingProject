@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class SpikeTrap : MonoBehaviour
 {
-    BoxCollider Collider;   
+    BoxCollider Collider;
 
-    private float time_remaining = 1.0f;
+    Rigidbody rb;   
+
+    private float time_remaining = 0.75f;
 
     private bool timer_running;
 
@@ -16,13 +18,15 @@ public class SpikeTrap : MonoBehaviour
 
     private float original_position;
 
-    public float speed = 15;
+    private float speed = 700;
 
+    private bool force_added = false;
 
+   
     void Start()
     {
         Collider = gameObject.GetComponent<BoxCollider>();
-        
+        rb = gameObject.GetComponent<Rigidbody>();       
     }
 
         void Update()
@@ -35,7 +39,7 @@ public class SpikeTrap : MonoBehaviour
             }
             else if (time_remaining <= 0)
             {
-                time_remaining = 1.0f;                   
+                time_remaining = 0.75f;                   
                 timer_running = false;
                 trigger_trap = true;                
             }
@@ -71,12 +75,19 @@ public class SpikeTrap : MonoBehaviour
             float distance_check = hit.distance;
             
            
-            if (distance_check > 0.2f)
+            if (distance_check > 2.0f)
             {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);               
+                // transform.Translate(Vector3.forward * speed * Time.deltaTime);
+              if (!force_added)
+                {
+                    rb.AddForce(transform.forward * speed);
+                    force_added = true;
+                }                
             }
-            if (distance_check <= 0.5f)
+            if (distance_check <= 2.0f)
             {
+                Vector3 temp_vec = new Vector3(0.0f, 0.0f, 0.0f);
+                rb.velocity = temp_vec;
                 reset_trap = true;
             }
         }
@@ -100,7 +111,10 @@ public class SpikeTrap : MonoBehaviour
             {
                 reset_trap = false;
                 trigger_trap = false;
+                force_added = false;
             }
         }      
     }
+
+  
 }
