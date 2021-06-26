@@ -283,7 +283,8 @@ public class Build_Level : MonoBehaviour
 
         for (int i = 0; i < Chosen_Lower_Areas.Count; i++)
         {
-            Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
+            GameObject temp_room = Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
+            temp_room.transform.rotation = Quaternion.AngleAxis(RandomRotation(), Vector3.up);
             Vector3 something = new Vector3(Positions[i].x, Positions[i].y, Positions[i].z);
             Vector3 otherTemp_vec = new Vector3(0.0f, 5.0f, 0.0f);
 
@@ -313,8 +314,8 @@ public class Build_Level : MonoBehaviour
                 }
                 if (skip == false)
                 {
-                    Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
-                    
+                    GameObject temp_room = Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
+                    temp_room.transform.rotation = Quaternion.AngleAxis(RandomRotation(), Vector3.up);
                 }
             }
         }
@@ -479,20 +480,48 @@ public class Build_Level : MonoBehaviour
     {
         if (_size == MapSize.Small)
         {
-            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
             Instantiate(Glasshouse_Small, temp_pos, Quaternion.identity);            
         }
         if (_size == MapSize.Medium)
         {
-            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
             Instantiate(Glasshouse_Medium, temp_pos, Quaternion.identity);
             
         }
         if (_size == MapSize.Large)
         {
-            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
             Instantiate(Glasshouse_Large, temp_pos, Quaternion.identity);
             
         }
+    }
+
+    float RandomRotation()
+    {
+        int temp_random = Random.Range(0, 4);
+        switch(temp_random)
+        {
+            case 0:
+                {
+                    return 90.0f;
+                }
+                break;
+            case 1:
+                {
+                    return 180.0f;
+                }
+                break;
+            case 2:
+                {
+                    return 270.0f;
+                }
+                case 3:
+                {
+                    return 360.0f;
+                }
+                break;
+        }
+        return 0.0f;
     }
 }
