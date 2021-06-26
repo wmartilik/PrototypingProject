@@ -50,7 +50,7 @@ public class GooScript : MonoBehaviour
     {
         if (enemyHealth != null)
         {
-            enemyHealth.TakeDamage(.1f);
+            enemyHealth.TakeDamage(1);
         }
     }
 }

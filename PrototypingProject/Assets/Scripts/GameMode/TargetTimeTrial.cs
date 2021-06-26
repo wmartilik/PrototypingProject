@@ -13,9 +13,7 @@ public class TargetTimeTrial : MonoBehaviour
     private GameObject score;
 
     [SerializeField]
-    PlayerHealth[] score_points;
-
-    float playerScore;
+    PlayerHealth score_points;
 
     [SerializeField]
     private GameObject results;
@@ -50,8 +48,6 @@ public class TargetTimeTrial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //add hp of each target to determine total score
-        playerScore = Mathf.Round(score_points[0].health + score_points[1].health + score_points[2].health);
 
         if (timer_running)
         {
@@ -75,20 +71,20 @@ public class TargetTimeTrial : MonoBehaviour
                 player.GetComponent<FirstPersonController>().enabled = false;
                 ResultsScreen();
                 timer_running = false;
-                
+                Debug.Log("FINISHED");
             }
         }
         TimeDisplay(time_remaining);
-        ScoreDisplay(playerScore);
-        if (playerScore >= 250 & playerScore < 500)
+        ScoreDisplay(score_points.health);
+        if (score_points.health >= 100 & score_points.health < 500)
         {
             score_text.color = Color.yellow;
         }
-        else if (playerScore >= 500 & playerScore < 1000)
+        else if (score_points.health >= 500 & score_points.health < 1000)
         {
             score_text.color = Color.green;
         }
-        else if (playerScore >= 1000)
+        else if (score_points.health >= 1000)
         {
             score_text.color = Color.cyan;
         }
@@ -126,15 +122,15 @@ public class TargetTimeTrial : MonoBehaviour
         Cursor.visible = true;
         results.SetActive(true);
 
-        if (playerScore >= 250 & playerScore < 500)
+        if (score_points.health >= 100 & score_points.health < 500)
         {
             results.GetComponentInChildren<Text>().color = Color.yellow;
         }
-        else if (playerScore >= 500 & playerScore < 1000)
+        else if (score_points.health >= 500 & score_points.health < 1000)
         {
             results.GetComponentInChildren<Text>().color = Color.green;
         }
-        else if (playerScore >= 1000)
+        else if (score_points.health >= 1000)
         {
             results.GetComponentInChildren<Text>().color = Color.cyan;
         }
