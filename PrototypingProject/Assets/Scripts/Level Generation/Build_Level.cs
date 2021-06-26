@@ -480,7 +480,7 @@ public class Build_Level : MonoBehaviour
     {
         if (_size == MapSize.Small)
         {
-            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
+            Vector3 temp_pos = new Vector3(12.5f, 11.0f, 12.5f);
             Instantiate(Glasshouse_Small, temp_pos, Quaternion.identity);            
         }
         if (_size == MapSize.Medium)
@@ -516,7 +516,7 @@ public class Build_Level : MonoBehaviour
                 {
                     return 270.0f;
                 }
-                case 3:
+            case 3:
                 {
                     return 360.0f;
                 }

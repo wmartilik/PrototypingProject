@@ -71,7 +71,7 @@ public class TargetTimeTrial : MonoBehaviour
                 player.GetComponent<FirstPersonController>().enabled = false;
                 ResultsScreen();
                 timer_running = false;
-                Debug.Log("FINISHED");
+                
             }
         }
         TimeDisplay(time_remaining);
