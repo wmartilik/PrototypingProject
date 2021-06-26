@@ -34,6 +34,15 @@ public class Build_Level : MonoBehaviour
     [SerializeField]
     private bool MultiFloor;
 
+    [SerializeField]
+    private GameObject Glasshouse_Small;
+
+    [SerializeField]
+    private GameObject Glasshouse_Medium;
+
+    [SerializeField]
+    private GameObject Glasshouse_Large;
+
     private List<GameObject> Chosen_Lower_Areas = new List<GameObject>();
 
     private List<GameObject> Chosen_Upper_Areas = new List<GameObject>();
@@ -157,7 +166,7 @@ public class Build_Level : MonoBehaviour
         Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
         //Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
-        Debug.Log(Room_Centers.Count);
+        PlaceGlassHouse(Level_Size);
     }
 
     void FillPositionsVectors()
@@ -274,7 +283,8 @@ public class Build_Level : MonoBehaviour
 
         for (int i = 0; i < Chosen_Lower_Areas.Count; i++)
         {
-            Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
+            GameObject temp_room = Instantiate(Chosen_Lower_Areas[i], Positions[i], Quaternion.identity);
+            temp_room.transform.rotation = Quaternion.AngleAxis(RandomRotation(), Vector3.up);
             Vector3 something = new Vector3(Positions[i].x, Positions[i].y, Positions[i].z);
             Vector3 otherTemp_vec = new Vector3(0.0f, 5.0f, 0.0f);
 
@@ -304,8 +314,8 @@ public class Build_Level : MonoBehaviour
                 }
                 if (skip == false)
                 {
-                    Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
-                    
+                    GameObject temp_room = Instantiate(Chosen_Upper_Areas[i], Upper_Positions[i], Quaternion.identity);
+                    temp_room.transform.rotation = Quaternion.AngleAxis(RandomRotation(), Vector3.up);
                 }
             }
         }
@@ -464,5 +474,54 @@ public class Build_Level : MonoBehaviour
                     Instantiate(Barricade, UBarricade_Positions_Large[i], Quaternion.identity);
             }
         }
+    }
+
+    void PlaceGlassHouse(MapSize _size)
+    {
+        if (_size == MapSize.Small)
+        {
+            Vector3 temp_pos = new Vector3(12.5f, 11.0f, 12.5f);
+            Instantiate(Glasshouse_Small, temp_pos, Quaternion.identity);            
+        }
+        if (_size == MapSize.Medium)
+        {
+            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
+            Instantiate(Glasshouse_Medium, temp_pos, Quaternion.identity);
+            
+        }
+        if (_size == MapSize.Large)
+        {
+            Vector3 temp_pos = new Vector3(0.0f, 12.0f, 0.0f);
+            Instantiate(Glasshouse_Large, temp_pos, Quaternion.identity);
+            
+        }
+    }
+
+    float RandomRotation()
+    {
+        int temp_random = Random.Range(0, 4);
+        switch(temp_random)
+        {
+            case 0:
+                {
+                    return 90.0f;
+                }
+                break;
+            case 1:
+                {
+                    return 180.0f;
+                }
+                break;
+            case 2:
+                {
+                    return 270.0f;
+                }
+            case 3:
+                {
+                    return 360.0f;
+                }
+                break;
+        }
+        return 0.0f;
     }
 }
