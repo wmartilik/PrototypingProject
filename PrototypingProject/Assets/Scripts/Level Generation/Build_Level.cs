@@ -34,6 +34,15 @@ public class Build_Level : MonoBehaviour
     [SerializeField]
     private bool MultiFloor;
 
+    [SerializeField]
+    private GameObject Glasshouse_Small;
+
+    [SerializeField]
+    private GameObject Glasshouse_Medium;
+
+    [SerializeField]
+    private GameObject Glasshouse_Large;
+
     private List<GameObject> Chosen_Lower_Areas = new List<GameObject>();
 
     private List<GameObject> Chosen_Upper_Areas = new List<GameObject>();
@@ -157,7 +166,7 @@ public class Build_Level : MonoBehaviour
         Vector3 temp_vec = new Vector3(0.0f, -20.0f, 0.0f);
         //Instantiate(Deathnet, temp_vec, Quaternion.identity);
 
-        Debug.Log(Room_Centers.Count);
+        PlaceGlassHouse(Level_Size);
     }
 
     void FillPositionsVectors()
@@ -463,6 +472,27 @@ public class Build_Level : MonoBehaviour
                 else
                     Instantiate(Barricade, UBarricade_Positions_Large[i], Quaternion.identity);
             }
+        }
+    }
+
+    void PlaceGlassHouse(MapSize _size)
+    {
+        if (_size == MapSize.Small)
+        {
+            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Instantiate(Glasshouse_Small, temp_pos, Quaternion.identity);            
+        }
+        if (_size == MapSize.Medium)
+        {
+            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Instantiate(Glasshouse_Medium, temp_pos, Quaternion.identity);
+            
+        }
+        if (_size == MapSize.Large)
+        {
+            Vector3 temp_pos = new Vector3(0.0f, 22.0f, 0.0f);
+            Instantiate(Glasshouse_Large, temp_pos, Quaternion.identity);
+            
         }
     }
 }
