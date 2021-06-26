@@ -29192,7 +29192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a58875c49c8f91438c86f916cf176d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level_Size: 3
+  Level_Size: 8
   Lower_Areas:
   - {fileID: 2822736706616243422, guid: ffae1dd31452c3745b62902e96efec38, type: 3}
   - {fileID: 2641909668733488277, guid: f06ddf64f1dc3ea4cb65bc98de06fd4c, type: 3}
