@@ -7,7 +7,7 @@ public class FallingFloor : MonoBehaviour
     BoxCollider player_check;
     GameObject player;
 
-    private float time_remaining = 0.5f;
+    private float time_remaining = 1.5f;
 
     private bool timer_running;
 
